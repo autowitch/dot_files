@@ -1,0 +1,77 @@
+.backups
+*.bak
+*.orig
+*.swp
+pig_*.log
+*.log
+bkp/
+*.q
+*_log
+*_log_*
+*.tsv
+*.out
+
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+
+work/
+tmp/
+orig/
+tmp/
+*.orig
+*.old
+foo
+bar
+baz
+
+
+# PERL
+blib/
+_build/
+cover_db/
+Build
+Build.bat
+.last_cover_stats
+Makefile
+Makefile.old
+MANIFEST.bak
+META.yml
+MYMETA.yml
+nytprof.out
+pm_to_blib
+
+
+# PYTHON
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+eggs
+parts
+var
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+#Mr Developer
+.mr.developer.cfg
+
+
+# JAVA
+
+.classpath
+.project
+RET.log
+.settings
