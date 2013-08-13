@@ -1,0 +1,129 @@
+[color]
+	ui = auto
+    branch = auto
+    status = auto
+    diff = auto
+
+[init]
+    templatedir=~/.git-core/templates
+
+[core]
+	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore
+
+[diff]
+	renames = copies
+	mnemonicprefix = true
+
+[rerere]
+	enabled = true
+
+[merge]
+	stat = true
+	diff = vimdiff
+
+[branch]
+	autosetupmerge = true
+
+[alias]
+	a = add
+	aa = add --all
+	ae = add --edit
+	ai = add --interactive
+	amend = commit --amend -C HEAD
+	ap = add --patch
+	au = add --update
+	b = branch
+	c = commit
+	ca = commit --amend
+	changes = diff --name-status -r
+	co = checkout
+	cpc = cherry-pick
+	d = diff
+	dc = diff --cached
+	div = divergence
+	ds = diff --staged
+    gdc = diff --color-words
+	h = help
+	irb = rebase --interactive
+	l = log --oneline --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ls-ignored = ls-files --exclude-standard --ignored --others
+	m = merge
+	mm = merge --no-ff
+	msg = commit --allow-empty -m
+	p = cherry-pick -s
+	pick = cherry-pick
+	prune-remotes = "!for remote in `git remote`; do git remote prune $remote; done"
+	r = remote
+	ra = !git log --graph --abbrev-commit --date=relative -20 --all --pretty='format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+	rb = rebase
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
+	rh = reset --hard
+	ru = remote update --prune
+	s = status
+	sl = shortlog
+	sm = submodule
+	sma = submodule add
+	smu = submodule update --init
+	st = stash
+	stl = stash list
+	stp = stash pop
+	undo = reset --soft HEAD^
+	wd = diff --color-words
+	wds = diff --color-words --staged
+
+    wip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"wip\""
+    unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
+    rb = !"git wip;git rebase -i origin/master;git unwip"
+    pr = !"git fetch;git wip;git rebase --stat origin;git unwip;git heads"
+    head = !"git log -n1"
+    lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+    heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
+    panic = !tar cvf "../git_panic.`date +%F`.tar" *
+    fix = commit --amend -C HEAD
+    detach = checkout HEAD^0
+    log-graph = log --all --graph --decorate
+    log-refs = log --all --graph --decorate --oneline --simplify-by-decoration --no-merges
+    log-timeline = log --format='%Cred%h%Creset %Cblue%an%Creset %C(yellow)%ar%Creset - %C(cyan)%s%Creset'
+    log-local = log --oneline origin..HEAD
+    log-fetched = log --oneline HEAD..origin/master
+
+    log-name = !"git log --pretty=\"format:%cd, %an, %s\""
+    log-file = !"git log --pretty=\"format:%cd, %an, %s\" --name-only"
+    cards = !"git log --pretty=\"format:%s\" | sed -n '/^[Ss][0-9]\\+:/{s/:.*$//;p}' | sort -g -k 1.2 -u -r"
+    story = !"git log --pretty=\"format:%s|%an, %cd\" | sed -n '/^[sS][0-9]\\+:/{s/^\\([Ss][0-9]\\+\\):[ ]*\\(.\\+\\)|\\(.*\\)$/\\1, \\3, \\2:/;p}'" | sort -g -k 1,2
+    local-cards = !"git log origin/master..HEAD --pretty=\"format:%s\" | sed -n '/^[Ss][0-9]\\+:/{s/:.*$//;p}' | sort -g -k 1.2 -u -r"
+    local-story = !"git log origin/master..HEAD --pretty=\"format:%s|%an, %cd\" | sed -n '/^[sS][0-9]\\+:/{s/^\\([Ss][0-9]\\+\\):[ ]*\\(.\\+\\)|\\(.*\\)$/\\1, \\3, \\2:/;p}'" | sort -g -k 1,2
+    local-cards-all-branches = !"git log --not --remotes --pretty=\"format:%s\" | sed -n '/^[Ss][0-9]\\+:/{s/:.*$//;p}' | sort -g -k 1.2 -u -r"
+    local-story-all-branches = !"git log --not --remotes --pretty=\"format:%s|%an, %cd\" | sed -n '/^[sS][0-9]\\+:/{s/^\\([Ss][0-9]\\+\\):[ ]*\\(.\\+\\)|\\(.*\\)$/\\1, \\3, \\2:/;p}'" | sort -g -k 1,2
+    vimdiff="difftool -y -t vimdiff"
+    bluereview = push origin HEAD:refs/for/blueteam
+
+[advice]
+#	pushNonFastForward = false
+#	statusHints = false
+
+[apply]
+#	whitespace = nowarn
+
+[pager]
+	color = true
+
+[diff]
+    tool = /usr/bin/vimdiff
+
+[diff "zip"]
+  textconv = unzip -c -a
+
+[difftool "vimdiff"]
+    cmd = /usr/bin/vimdiff $LOCAL $REMOTE
+
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1400x747+21+80
+	main-window-view = HistoryView
+	history-view-vpane-position = 293
+	file-view-vpane-position = 630
