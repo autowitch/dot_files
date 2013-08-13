@@ -1,0 +1,22 @@
+export TERM=xterm-256color
+export LD_LIBRARY_PATH="~/lib/instantclient_11_2:~/bin/sqldeveloper:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="~/bin/sqldeveloper:$LD_LIBRARY_PATH"
+
+
+export PATH="~/derp:~/bin:/usr/local/hadoop/bin:/usr/local/hbase/bin:/usr/local/hive/bin:/usr/local/pig/bin:/usr/local/zookeeper/bin:$PATH"
+
+# Force perl to do coverage analysis
+export HARNESS_PERL_SWITCHES=-MDevel::Cover
+#export ORACLE_HOME=/usr/lib/oracle/11.2/client64/
+#export LD_LIBRARY_PATH=/usr/lib/oracle/11.2/client64/lib
+
+export ORACLE_HOME=/usr/lib/oracle/11.2/client64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME:$ORACLE_HOME/lib
+export TNS_ADMIN=$ORACLE_HOME
+export PATH=$PATH:$ORACLE_HOME/bin
+
+export PYTHONPATH="$PYTHONPATH:~/lib/python/"
+
+export HBASE_HOME=/usr/local/hbase
+export HIVE_HOME=/usr/local/hive
+export ZOOKEEPER_HOME=/usr/local/zookeeper
